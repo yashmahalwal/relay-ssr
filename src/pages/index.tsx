@@ -31,7 +31,6 @@ const Home: NextPage<HomeProps> = ({ records }) => {
 };
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-    console.log("here");
     const env = environment();
     await fetchQuery(env, query, {});
 
