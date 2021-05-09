@@ -1,4 +1,5 @@
 import { Network, Store, RecordSource, Environment } from "relay-runtime";
+import { RecordMap } from "relay-runtime/lib/store/RelayStoreTypes";
 
 function fetchQuery(operation, variables) {
     return fetch("https://api.github.com/graphql", {
@@ -16,9 +17,9 @@ function fetchQuery(operation, variables) {
     });
 }
 
-export default function makeEnvrionment() {
+export default function makeEnvrionment(records?: RecordMap) {
     return new Environment({
         network: Network.create(fetchQuery),
-        store: new Store(new RecordSource()),
+        store: new Store(new RecordSource(records)),
     });
 }
