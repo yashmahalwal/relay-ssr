@@ -16,8 +16,9 @@ function fetchQuery(operation, variables) {
     });
 }
 
-export default () =>
-    new Environment({
+export default function makeEnvrionment() {
+    return new Environment({
         network: Network.create(fetchQuery),
         store: new Store(new RecordSource()),
     });
+}

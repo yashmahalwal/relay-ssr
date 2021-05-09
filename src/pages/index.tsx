@@ -12,7 +12,6 @@ const query = graphql`
 
 function Home() {
     const result = useQuery<pagesQuery>(query, {});
-
-    return <h1>{result.props?.viewer.login ?? "Loading"}</h1>;
+    return <h1>{result.data?.viewer.login || "Loading"}</h1>;
 }
 export default Home;
